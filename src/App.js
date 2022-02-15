@@ -13,7 +13,7 @@ render(){
         <Navbar title="User App"/>
         <Users/>
         <AddUser/>
-        <Test test = "deneme"/>
+        <Test test = "test"/>
       </div>
     );
   }
