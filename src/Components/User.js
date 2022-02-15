@@ -15,6 +15,10 @@ class User extends Component {
         const {id} = this.props;
         dispatch({type:"DELETE_USER", payload:id});
     }
+    componentWillUnmount() {
+        console.log("componentWillUnmount");
+        //When some elements are deleted
+    }
     render(){
         const {isVisible} = this.state;
         const {name, surname, age} = this.props;

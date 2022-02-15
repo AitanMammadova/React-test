@@ -33,7 +33,7 @@ class Test extends Component {
         console.log("Render");
         const {a} = this.state
         return (
-        <div>{a}</div>
+        <h3 className='m-4'>{a}</h3>
         )
     }
 }
