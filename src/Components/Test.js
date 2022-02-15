@@ -19,6 +19,16 @@ class Test extends Component {
         //Constructor>Render>ComponentDidMount>Render 
 
     }
+    componentDidUpdate(prevProps, prevState) {
+        console.log("componentDidUpdate");
+        //After Update(Render)
+    }
+    shouldComponentUpdate(){
+        console.log("shouldComponentUpdate");
+        return true; // After ComponentDidMount it works and updating
+        //return false; // After ComponentDidMount it doesn't work
+
+    }
     render() {
         console.log("Render");
         const {a} = this.state
