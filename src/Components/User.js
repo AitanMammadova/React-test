@@ -20,10 +20,10 @@ class User extends Component {
         //     console.log(response);
         // })
     }
-    componentWillUnmount() {
-        console.log("componentWillUnmount");
-        //When some elements are deleted
-    }
+    // componentWillUnmount() {
+    //     console.log("componentWillUnmount");
+    //     When some elements are deleted
+    // }
     render(){
         const {isVisible} = this.state;
         const {name, surname, age} = this.props;
