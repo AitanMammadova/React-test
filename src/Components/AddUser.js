@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import posed from 'react-pose'
 import uniqid from 'uniqid';
 import UserConsumer from '../context';
+import axios from 'axios';
 const Animation = posed.div({
     visible :{
         opacity:1,
@@ -35,6 +36,10 @@ class AddUser extends Component {
     }
     addUser = (dispatch, e)=>{
         e.preventDefault(); //submit Control
+        axios.post ('http://localhost:8000/users',this.state)
+        .then(response=>{
+            console.log(response);
+        })
         const  {name, surname, age} = this.state;
         const newUser = {
             id : uniqid(),

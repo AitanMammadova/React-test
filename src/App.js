@@ -11,6 +11,7 @@ render(){
     return (
       <div className="App">
         <Navbar title="User App"/>
+        <hr/>
         <Users/>
         <AddUser/>
         <Test test = "test"/>
