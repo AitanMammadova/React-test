@@ -12,14 +12,19 @@ class User extends Component {
             isVisible : !this.state.isVisible
         })
     }
-    deleteUser=(dispatch,e)=>{
-        const {id} = this.props;
-        dispatch({type:"DELETE_USER", payload:id});
-        // axios.delete(`http://localhost:8000/users${id}`)
-        // .then(response=>{
-        //     console.log(response);
-        // })
+    
+    deleteUser =async (id, dispatch) => {
+        try{
+            await axios.delete('http://localhost:8000/users/'+id)
+            dispatch({
+            type: 'DELETE_USER',
+            payload: id
+        })
+    } catch(e){
+        console.log(e)
     }
+   
+}
     // componentWillUnmount() {
     //     console.log("componentWillUnmount");
     //     When some elements are deleted
@@ -27,6 +32,7 @@ class User extends Component {
     render(){
         const {isVisible} = this.state;
         const {name, surname, age} = this.props;
+        const {id} = this.props;
         return(
             <UserConsumer>
                 {
@@ -37,7 +43,7 @@ class User extends Component {
                                 <div className="card" style = {isVisible ? {borderColor :"#b4b2c6"}: null}>
                                     <div className="card-header d-flex justify-content-between" style = {isVisible ? {backgroundColor :"#b4b2c6"}: null}>
                                         <h4 className="d-inline" onClick = {this.clickEvent}>{name}</h4>
-                                        <i onClick={this.deleteUser.bind(this,dispatch)} className="far fa-trash-alt" style={{cursor:"pointer"}}></i>
+                                        <i onClick={this.deleteUser.bind(this,id,dispatch)} className="far fa-trash-alt" style={{cursor:"pointer"}}></i>
                                     </div>
                                     {
                                         isVisible ? 

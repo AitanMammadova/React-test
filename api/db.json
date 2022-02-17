@@ -1,12 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "Aitan",
-      "surname": "Mammadova",
-      "age": "20"
-    },
-    {
       "id": "2",
       "name": "Mahammad",
       "surname": "Mammadov",
