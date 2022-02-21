@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import posed from 'react-pose'
-import uniqid from 'uniqid';
+import { v4 as uuid } from 'uuid';
 import UserConsumer from '../context';
 import axios from 'axios';
 const Animation = posed.div({
@@ -40,9 +40,11 @@ class AddUser extends Component {
         .then(response=>{
             console.log(response);
         })
+        .catch((err) => console.log(err));
+        
         const  {name, surname, age} = this.state;
         const newUser = {
-            id : uniqid(),
+            id : uuid(),
             name,
             surname,
             age 

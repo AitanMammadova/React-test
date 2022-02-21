@@ -7,7 +7,7 @@ const reducer =(state,action) =>{
     case "DELETE_USER":
       return{
         ...state,
-        users: state.users.filter(user=>action.payload!==user.id)
+        users: state.users.filter(user=>user.id!==action.payload)
       }
       case "ADD_USER":
         return{
@@ -25,12 +25,16 @@ export  class UserProvider extends Component {
           this.setState(state=> reducer (state,action))
         }
       }
-      componentDidMount = async()=> { 
-        const response = await axios.get("http://localhost:8000/users");
-        this.setState({
-          users : response.data
-        })
-        
+      componentDidMount () { 
+        // const response = await axios.get("http://localhost:8000/users");
+        // this.setState({
+        //   users : response.data
+        // })
+        axios.get("http://localhost:8000/users")
+        .then(response => this.setState({ users: response.data }))
+        .catch(error => {
+            console.error(error);
+        });
        }
   render() {
     return (

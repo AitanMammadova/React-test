@@ -13,26 +13,26 @@ class User extends Component {
         })
     }
     
-    deleteUser =async (id, dispatch) => {
-        try{
-            await axios.delete('http://localhost:8000/users/'+id)
-            dispatch({
+    deleteUser =async (id, dispatch,e) => {
+        dispatch({
             type: 'DELETE_USER',
             payload: id
-        })
-    } catch(e){
-        console.log(e)
+            })
+            try{
+                await axios.delete('http://localhost:8000/users/'+id+"/")
+                .then(response=>console.log(response))
+            }
+            catch(err){
+            console.log(err)
+          }
     }
-   
-}
     // componentWillUnmount() {
     //     console.log("componentWillUnmount");
     //     When some elements are deleted
     // }
     render(){
         const {isVisible} = this.state;
-        const {name, surname, age} = this.props;
-        const {id} = this.props;
+        const {name, surname, age,id} = this.props;
         return(
             <UserConsumer>
                 {
@@ -66,7 +66,6 @@ User.propTypes = {
     name : PropTypes.string.isRequired,
     surname : PropTypes.string.isRequired,
     age : PropTypes.string.isRequired,
-    id :PropTypes.string.isRequired
 }
 //default name for name
 User.defaultProps = {
